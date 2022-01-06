@@ -16,24 +16,55 @@ function App() {
       })
   }, [])
 
-  const newSentence = sentence.split(' ').forEach((words, i) => {
-    const letters = words.split('').slice(1, -1)
-  
-    // if(letters !== undefined){
-    //   letters.map((letter, i) =>{
-    //     console.log(letter)
-    //   })
-    // }
   
     
-  })
-  console.log(newSentence)
+    function scrambler (sentence){
+      const words = sentence.split(' ')
+      let result = []
+      words.forEach((characters) =>{
+        
+        const character = characters.split('')
+        const characterLength = character.length
+        const firstIndex = character[0]
+        const lastIndex = character[characterLength - 1]
+      
+        for (let i = 1; i < characterLength - 1; i++){
+        
+          
+          const j = Math.ceil(Math.random() * (i + 1))
+          if (character[j] !== firstIndex && character[j] !== lastIndex){
+            
+            const temp = character[i]
+          character[i] = character[j]
+          character[j] = temp
+          }
+          
+   
+          
+
+        }
+
+        result.push(character.join(''))
+        
+      })
+      return result.join(' ')
+   
+    }
+    console.log(scrambler(sentence))
+  
+  
+   
+    // console.log(scrambler(sentence))
+
+
+ 
+  // console.log(newSentence)
   
 
   return (
     <div className="App">
       <h1 className='scambled-word'>
-        {sentence}
+        {scrambler(sentence)}
       </h1>
 
     </div>
