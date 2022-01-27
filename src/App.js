@@ -9,7 +9,6 @@ function App() {
   
 
   useEffect(() => {
-    axios.get('https://api.hatchways.io/assessment/sentences/1')
     axios.get('https://api.hatchways.io/assessment/sentences/:counter')
       .then(res => {
       })
