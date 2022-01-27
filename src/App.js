@@ -6,10 +6,12 @@ function App() {
 
   const [sentence, setSentence] = useState('')
 
+  
+
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/sentences/1')
+    axios.get('https://api.hatchways.io/assessment/sentences/:counter')
       .then(res => {
-        setSentence(res.data.data.sentence)
       })
       .catch(err => {
         return console.log(err)
