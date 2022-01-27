@@ -11,6 +11,9 @@ function App() {
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/sentences/:counter')
       .then(res => {
+        if (res.data){
+          setSentence(res.data.data.sentence)
+        }
       })
       .catch(err => {
         return console.log(err)
